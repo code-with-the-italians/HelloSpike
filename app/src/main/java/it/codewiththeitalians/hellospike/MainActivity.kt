@@ -10,11 +10,22 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import it.codewiththeitalians.hellospike.ui.theme.HelloSpikeTheme
+import timber.log.Timber
+
+/**
+ * INBOX
+ *
+ * 1. Add Timber ✅
+ * 2. Add Crashlytics ✅
+ * 3. Wire Timber+Crashlytics ✅
+ * 4. Profit ✅
+ */
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +47,16 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+        }
+        catchMe()
+    }
+
+    private fun catchMe() {
+        try {
+            error("Catch me")
+        } catch (e: Exception) {
+            // handle crash
+            Timber.e(e)
         }
     }
 }
